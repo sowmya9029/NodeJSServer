@@ -31,12 +31,12 @@ export class Routes {
     }
 
     public routes(app): void { 
-
-        app.route('/').get((req: Request, res: Response) => {            
+       
+       /* app.route('/').get((req: Request, res: Response) => {            
             res.status(200).send({
                 message: 'Waytless!!!!'
             })
-        })          
+        })   */       
         
          //get all  menuItems 
             app.route('/menuitems/:restId').get((req: Request, res: Response) => {

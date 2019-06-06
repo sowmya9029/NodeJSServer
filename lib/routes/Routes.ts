@@ -6,7 +6,7 @@ import {CustomerModel} from "../models/CustomerModel";
 import { MenuItemCategoryModel } from "../models/MenuItemCategoryModel";
 import {OrderModel} from "../models/OrderModel";
 
-
+import * as express from 'express';
 
 
 export class Routes {       
@@ -37,7 +37,7 @@ export class Routes {
                 message: 'Waytless!!!!'
             })
         })        
-        
+        app.route('/', express.static(__dirname+'/angularDist'));
          //get all  menuItems 
             app.route('/menuitems/:restId').get((req: Request, res: Response) => {
                 var restId = req.params.restId;

@@ -29,14 +29,10 @@ export class Routes {
         this.menuitem = new MenuItemModel();
         this.menuitemcat = new MenuItemCategoryModel();
     }
+
     public routes(app): void { 
+
         app.use('/', express.static(__dirname+'/angularDist'));
-        /*app.route('/').get((req: Request, res: Response) => {            
-            res.status(200).send({
-                message: 'Waytless!!!!'
-            })
-        })  */        
-        
          //get all  menuItems 
             app.route('/menuitems/:restId').get((req: Request, res: Response) => {
                 var restId = req.params.restId;
@@ -44,7 +40,7 @@ export class Routes {
                 this.menuitem.retrieveAllMenuBasedOnRestaurant(res,{restaurantID:restId});
            })
 
-           //get all  menu Items  by category
+           //get all  menuItems  by category
             app.route('/menuitems/:restId/:categoryId').get((req: Request, res: Response) => {
                 var restId = req.params.restId;
                 var categoryId = req.params.categoryId;
@@ -327,4 +323,3 @@ export class Routes {
        
     }
 }
-    

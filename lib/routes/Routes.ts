@@ -265,7 +265,12 @@ export class Routes {
             });
             res.send("Restaurant Added.");
         })
-       
+       // to get all the waitlist entries in a restaurant
+       app.route('/waitlist/:restId').get((req: Request, res: Response) => {
+        var restuarantId = req.params.restId;
+        console.log("Query all waitlist items from restaurant with id: " + restuarantId);
+        this.waitlist.retrieveAllWaitlistEntriesPerRestaurant(res, restuarantId);
+    })
         //add to waitlist of a particular restaurant
         app.route('/waitlist').post((req: Request, res: Response) => {
             console.log(req.body);

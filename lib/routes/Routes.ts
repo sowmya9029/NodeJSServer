@@ -331,5 +331,7 @@ export class Routes {
             console.log("Complete a reservation: " + queueID + " in " + restaurantId);
             this.waitlist.completeRes(res, {restaurantID:restaurantId, queueID:queueID});
         })
+
+       
     }
 }

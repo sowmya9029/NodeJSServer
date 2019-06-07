@@ -29,24 +29,22 @@ export class Routes {
         this.menuitem = new MenuItemModel();
         this.menuitemcat = new MenuItemCategoryModel();
     }
-
     public routes(app): void { 
-       
-       /*app.route('/').get((req: Request, res: Response) => {            
+        app.use('/', express.static(__dirname+'/angularDist'));
+        /*app.route('/').get((req: Request, res: Response) => {            
             res.status(200).send({
                 message: 'Waytless!!!!'
             })
-        }) */
+        })  */        
         
-            app.use('/', express.static(__dirname+'/angularDist'));
-            //get all  menuItems 
+         //get all  menuItems 
             app.route('/menuitems/:restId').get((req: Request, res: Response) => {
                 var restId = req.params.restId;
                 console.log("Get all menuItems for rest id :"+restId);
                 this.menuitem.retrieveAllMenuBasedOnRestaurant(res,{restaurantID:restId});
            })
 
-           //get all  menuItems  by category
+           //get all  menu Items  by category
             app.route('/menuitems/:restId/:categoryId').get((req: Request, res: Response) => {
                 var restId = req.params.restId;
                 var categoryId = req.params.categoryId;
@@ -265,12 +263,7 @@ export class Routes {
             });
             res.send("Restaurant Added.");
         })
-       // to get all the waitlist entries in a restaurant
-       app.route('/waitlist/:restId').get((req: Request, res: Response) => {
-        var restuarantId = req.params.restId;
-        console.log("Query all waitlist items from restaurant with id: " + restuarantId);
-        this.waitlist.retrieveAllWaitlistEntriesPerRestaurant(res, restuarantId);
-    })
+       
         //add to waitlist of a particular restaurant
         app.route('/waitlist').post((req: Request, res: Response) => {
             console.log(req.body);
@@ -331,13 +324,7 @@ export class Routes {
             this.order.updateQuantity(res,searchCriteria,toBeChanged);
         })
 
-        app.route('/waitlist/:restaurantID/complete/:queueID').post((req:Request,res:Response) => {
-            var restaurantId = req.params.restaurantID;
-            var queueID = req.params.queueID;
-            console.log("Complete a reservation: " + queueID + " in " + restaurantId);
-            this.waitlist.completeRes(res, {restaurantID:restaurantId, queueID:queueID});
-        })
-
        
     }
 }
+    

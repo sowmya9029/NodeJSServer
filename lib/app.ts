@@ -12,12 +12,10 @@ class App {
     constructor() {
         this.app = express();
         this.app.use(cors());
-        this.config();      
+        this.config();    
+       
         this.routePrv.routes(this.app);    
-        this.app.get('/', function(req, res) {
-            res.sendfile(__dirname+'/angularDist/index.html')
         
-        });
     }
 
     private config(): void{

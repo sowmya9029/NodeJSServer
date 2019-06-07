@@ -32,19 +32,14 @@ export class Routes {
 
     public routes(app): void { 
        
-        /*app.route('/').get((req: Request, res: Response) => {            
+       /*app.route('/').get((req: Request, res: Response) => {            
             res.status(200).send({
                 message: 'Waytless!!!!'
             })
-        }) */ 
+        }) */
         
-        app.route('/').get((req: Request, res: Response) => {            
-            res.sendfile(__dirname+'/angularDist/index.html');
-            console.log('assasa');
-        })
-        
-       
-         //get all  menuItems 
+            app.use('/', express.static(__dirname+'/angularDist'));
+            //get all  menuItems 
             app.route('/menuitems/:restId').get((req: Request, res: Response) => {
                 var restId = req.params.restId;
                 console.log("Get all menuItems for rest id :"+restId);

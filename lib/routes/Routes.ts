@@ -126,7 +126,6 @@ export class Routes {
         // to get all the waitlist entries
         app.route('/waitlist/').get((req: Request, res: Response) => {
             console.log('Query all wait lists');
-
             this.waitlist.retrieveAllWaitlists(res);
         })
 
